@@ -10,8 +10,9 @@ app.use(express.static("public"));
 
 app.post("/api", async (req, res) => {
   try {
-    console.log(req.body)
-    res.status(200).json({msg:req.body});
+    const requestData=req.body
+    console.log(requestData)
+    res.status(200).json({msg:requestData});
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
