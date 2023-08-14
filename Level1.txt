@@ -1,0 +1,6 @@
+Find the Largest x.log File:  Get-ChildItem -Path C:\ -Recurse -Filter *.log | Sort-Object -Property Length -Descending | Select-Object -First 1
+
+Truncate the File to 100 Lines: 
+   $logFilePath= "C:\Windows\debug\WIA"
+   $truncatedContent= Get-Content -Path $logFilePath | Select-Object -First 100
+   $trunCatedContent| Set-Content -Path $logFilePath
