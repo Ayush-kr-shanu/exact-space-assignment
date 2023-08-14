@@ -6,6 +6,9 @@ This project demonstrates how to submit JSON data through a web form and then di
  - Level 1:  [Leve -l](https://github.com/Ayush-kr-shanu/exact-space-assignment/blob/main/Level1.txt)
  - Level 2 and Level 3 : Repo
 
+ ## Deployed Links
+ - Deployed link : [Exact-Space](https://exact-space-ayush.onrender.com/)
+
 ## Features
 
 - Enter JSON data in a textarea.
