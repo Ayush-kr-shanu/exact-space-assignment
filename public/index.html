@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exact-Space</title>
+</head>
+<body>
+    <h1>Exact-Space</h1>
+    <div id="parent">
+        <form action="">
+            <textarea id="data" placeholder="Type Json Data only"></textarea>
+            <button>Submit</button>
+        </form>
+    
+        <div id="data">
+            <form action="" id="form">
+                <div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    console.log("done");
+    let displayDiv = document.getElementById("displayData");
+    let form=document.querySelector("form")
+    form.addEventListener("submit", (e)=>{
+        e.preventDefault()
+
+        const data=form.text.value
+
+        try {
+            const paresedData=JSON.parse(data)
+            console.log("Valid JSON", paresedData);
+            fetch("http://localhost:3000/api",{
+                method:"POST",
+                headers:{
+                    "content-type":"application/json"
+                },
+                body:JSON.stringify(paresedData)
+            }).then(res => res.json())
+            .then((data)=>{
+                displayData(data)
+                console.log(data);
+            })
+            .catch((err)=>{
+                console.log(err.message);
+            })
+        } catch (err) {
+            console.log("Not valid JSON DATA:", inputData);
+        }
+    })
+
+    function displayData(datas){
+    let main = document.getElementById("form");
+    for(let data in datas){
+        let div = document.createElement("div");
+        let label = document.createElement("label");
+        label.textContent = data;
+
+        let input = document.createElement("input");
+        input.value = datas[data];
+        input.style.padding = "10px";
+        input.style.border = "1px solid #ccc";
+        // input.style.padding = "10px";
+        div.style.marginTop = "5px"
+        
+        div.append(label,input);
+
+        main.append(div);
+    }
+}
+</script>
